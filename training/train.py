@@ -1,12 +1,21 @@
+import argparse
+import os
 import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 
-from dataset import get_data
-from model import TinyTransformer
+from core.dataset import get_data
+from core.model import TinyTransformer
 
-torch.manual_seed(2) 
+parser = argparse.ArgumentParser()
+parser.add_argument("--seed", type=int, default=0)
+parser.add_argument("--out", default=None, help="checkpoint path (default: checkpoints/fp32/seed<seed>.pt)")
+args = parser.parse_args()
+out = args.out or f"checkpoints/fp32/seed{args.seed}.pt"
+os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+
+torch.manual_seed(args.seed)
 
 # settings taken from the paper
 D_MODEL = 24
@@ -20,7 +29,7 @@ X_tr, y_tr = torch.from_numpy(np.concatenate(train[0])), torch.from_numpy(np.con
 X_va, y_va = torch.from_numpy(np.concatenate(valid[0])), torch.from_numpy(np.concatenate(valid[1]))
 
 train_loader = DataLoader(TensorDataset(X_tr, y_tr), batch_size=BATCH, shuffle=True, drop_last=True)
-valid_loader = DataLoader(TensorDataset(X_va, y_va), batch_size=BATCH, shuffle=False, drop_last=True)
+valid_loader = DataLoader(TensorDataset(X_va, y_va), batch_size=BATCH, shuffle=False)
 
 model = TinyTransformer(num_in=8, num_out=1, d_model=D_MODEL)
 loss_fn = nn.MSELoss()
@@ -44,20 +53,19 @@ for epoch in range(EPOCHS):
     val_loss = 0
     with torch.no_grad():
         for X, y in valid_loader:
-            val_loss += loss_fn(model(X), y).item()
-    val_loss /= len(valid_loader)
+            val_loss += loss_fn(model(X), y).item() * len(X)   # weight by batch size (last batch is smaller)
+    val_loss /= len(valid_loader.dataset)
 
     print(f"epoch {epoch+1:3d} | train {train_loss:.4f} | valid {val_loss:.4f}")
 
    # early stoping
     if val_loss < best_val:
         best_val, bad_epochs = val_loss, 0
-        torch.save(model.state_dict(), "best_model.pt")
+        torch.save(model.state_dict(), out)
     else:
         bad_epochs += 1
         if bad_epochs >= PATIENCE:
             print(f"early stopping at epoch {epoch+1}")
             break
 
-np.savez("norm_stats.npz", mean=mean, std=std)   # needed later for evaluation
-print(f"best valid loss: {best_val:.4f} -> saved to best_model.pt")
+print(f"best valid loss: {best_val:.4f} -> saved to {out}")

@@ -1,4 +1,6 @@
-venv/
-SKAB-master/
+uv.lock
+checkpoints/
+.python-version
+pyproject.toml
 data/
-__pycache__/
+.idea/

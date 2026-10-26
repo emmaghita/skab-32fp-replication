@@ -24,5 +24,5 @@ for name, path in files.items():
 axes[0].legend()
 axes[-1].set_xlabel("time step (seconds)")
 plt.tight_layout()
-plt.savefig("regimes.png", dpi=120)
+plt.savefig("figures/regimes.png", dpi=120)
 plt.show()
