@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/training/train_qat.py", line 73, in <module>
+    int_loss = loss_fn(to_integer(best)(X_va), y_va).item()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/core/quantized_model.py", line 103, in to_integer
+    m.precompute()
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/core/quantized_model.py", line 76, in precompute
+    self.encoder.sequential.precompute()
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/.venv/lib/python3.12/site-packages/elasticai/creator/nn/integer/sequential/sequential.py", line 48, in precompute
+    submodule.precompute()
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/.venv/lib/python3.12/site-packages/elasticai/creator/nn/integer/encoderlayer/encoderlayer.py", line 149, in precompute
+    self.mha.precompute()
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/.venv/lib/python3.12/site-packages/elasticai/creator/nn/integer/mha/mha.py", line 115, in precompute
+    self.inner_attn_module.precompute()
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/.venv/lib/python3.12/site-packages/elasticai/creator/nn/integer/scaleddotproductattention/scaleddotproductattention.py", line 119, in precompute
+    self.softmax.precompute()
+  File "/home/emma/projects/thesis_exp/skab-32fp-replication/.venv/lib/python3.12/site-packages/elasticai/creator/nn/integer/softmax/softmaxLUT.py", line 86, in precompute
+    tmp_scale_factor = (1.0 - 0.0) / (
+                       ^^^^^^^^^^^^^^^
+ZeroDivisionError: float division by zero
+epoch   1 | train 0.9267 | valid (sim) 1.0314
+epoch   2 | train 0.9774 | valid (sim) 0.9462
+epoch   3 | train 0.9503 | valid (sim) 0.9272
+epoch   4 | train 0.9862 | valid (sim) 1.0526
+epoch   5 | train 1.0609 | valid (sim) 0.9756
+epoch   6 | train 0.9797 | valid (sim) 0.9935
+epoch   7 | train 1.0059 | valid (sim) 0.9823
+epoch   8 | train 1.0000 | valid (sim) 0.9866
+epoch   9 | train 1.0015 | valid (sim) 0.9706
+epoch  10 | train 1.0981 | valid (sim) 0.9772
+epoch  11 | train 0.9831 | valid (sim) 1.0171
+epoch  12 | train 1.0403 | valid (sim) 0.9551
+epoch  13 | train 1.0307 | valid (sim) 1.0000
+early stopping at epoch 13

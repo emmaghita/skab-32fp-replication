@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import torch
 import argparse
@@ -22,7 +23,11 @@ def load_models(path):
     model = QuantTinyTransformer(**ckpt["config"])
     model.load_state_dict(ckpt["state_dict"])
     model.eval()
-    return [(f"{path} [sim]", model), (f"{path} [int]", to_integer(model))]
+    try:
+        return [(f"{path} [sim]", model), (f"{path} [int]", to_integer(model))]
+    except ZeroDivisionError:   # degenerate quantizer range (e.g. 3-bit models that never learned)
+        print(f"NOTE: {path}: integer conversion failed (degenerate quantizer range), [sim] only")
+        return [(f"{path} [sim]", model)]
 
 
 def predict(model, X):
@@ -101,16 +106,25 @@ if __name__ == "__main__":
 
         print("\nThreshold-free metrics (per file, averaged over 20 files):")
         roc, pr = auc_scores(model, test)
-        rows.append((name, f1_cal, f1_fix, roc, pr))
+        rows.append((name, np.mean(val_res ** 2), f1_cal, f1_fix, roc, pr))
 
     print("\n===== SUMMARY =====")
-    print(f"{'model':<34}{'F1 cal':>8}{'F1 fixed':>10}{'AUC-ROC':>9}{'AUC-PR':>8}")
+    widths = [10, 8, 10, 9, 8]
+    header = f"{'model':<40}{'valid MSE':>10}{'F1 cal':>8}{'F1 fixed':>10}{'AUC-ROC':>9}{'AUC-PR':>8}"
+    line = lambda label, vals: f"{label:<40}" + "".join(f"{v:>{w}.3f}" for v, w in zip(vals, widths))
+    print(header)
     for r in rows:
-        print(f"{r[0]:<34}{r[1]:>8.3f}{r[2]:>10.3f}{r[3]:>9.3f}{r[4]:>8.3f}")
-    # mean/std per variant (fp32 / [sim] / [int]), so the variants are not mixed
-    for kind in dict.fromkeys(r[0].split(" ")[-1] if r[0].endswith("]") else "fp32" for r in rows):
-        group = [r for r in rows if (r[0].split(" ")[-1] if r[0].endswith("]") else "fp32") == kind]
-        if len(group) > 1:
-            m = np.array([r[1:] for r in group])
-            print(f"{'mean ' + kind:<34}" + "".join(f"{v:>{w}.3f}" for v, w in zip(m.mean(0), [8, 10, 9, 8])))
-            print(f"{'std ' + kind:<34}" + "".join(f"{v:>{w}.3f}" for v, w in zip(m.std(0), [8, 10, 9, 8])))
+        print(line(r[0], r[1:]))
+
+    # mean/std per group: checkpoint folder + variant, e.g. "qat4 [int]", so
+    # different bit widths and the [sim]/[int] variants are never mixed
+    def group_of(name):
+        path, _, variant = name.partition(" ")
+        return f"{os.path.basename(os.path.dirname(path))} {variant}".strip()
+    groups = dict.fromkeys(group_of(r[0]) for r in rows)
+    if any(sum(group_of(r[0]) == g for r in rows) > 1 for g in groups):
+        print(f"\n{'group (mean ± std over seeds)':<40}{'valid MSE':>10}{'F1 cal':>8}{'F1 fixed':>10}{'AUC-ROC':>9}{'AUC-PR':>8}")
+        for g in groups:
+            m = np.array([r[1:] for r in rows if group_of(r[0]) == g])
+            print(line(f"{g} (n={len(m)})", m.mean(0)))
+            print(line("", m.std(0)).replace(" 0.", "±0."))

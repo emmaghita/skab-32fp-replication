@@ -1,0 +1,19 @@
+epoch   1 | train 0.8705 | valid (sim) 0.8703
+epoch   2 | train 0.8339 | valid (sim) 0.8248
+epoch   3 | train 0.8258 | valid (sim) 0.8335
+epoch   4 | train 0.8274 | valid (sim) 0.8388
+epoch   5 | train 0.8315 | valid (sim) 0.8286
+epoch   6 | train 0.8211 | valid (sim) 0.8292
+epoch   7 | train 0.8313 | valid (sim) 0.8199
+epoch   8 | train 0.8282 | valid (sim) 0.8246
+epoch   9 | train 0.8344 | valid (sim) 0.8262
+epoch  10 | train 0.8333 | valid (sim) 0.8209
+epoch  11 | train 0.8279 | valid (sim) 0.8380
+epoch  12 | train 0.8285 | valid (sim) 0.8296
+epoch  13 | train 0.8214 | valid (sim) 0.8284
+epoch  14 | train 0.8338 | valid (sim) 0.8263
+epoch  15 | train 0.8324 | valid (sim) 0.8374
+epoch  16 | train 0.8588 | valid (sim) 0.8487
+epoch  17 | train 0.8621 | valid (sim) 0.8216
+early stopping at epoch 17
+best valid loss: sim 0.8199 | int 0.8572 -> saved to checkpoints/qat4/seed1.pt

@@ -1,0 +1,930 @@
+NOTE: checkpoints/qat3/seed0.pt: integer conversion failed (degenerate quantizer range), [sim] only
+NOTE: checkpoints/qat3/seed1.pt: integer conversion failed (degenerate quantizer range), [sim] only
+NOTE: checkpoints/qat3/seed2.pt: integer conversion failed (degenerate quantizer range), [sim] only
+NOTE: checkpoints/qat3/seed3.pt: integer conversion failed (degenerate quantizer range), [sim] only
+NOTE: checkpoints/qat3/seed4.pt: integer conversion failed (degenerate quantizer range), [sim] only
+
+===== checkpoints/fp32/seed0.pt =====
+validation: threshold (99th pct) 2.3349, median 0.4214
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.3432
+  valve2: threshold 3.1898
+  TP=15 FP=1 FN=5 TN=19 | precision 0.938 recall 0.750 F1 0.833
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3349
+  valve2: threshold 2.3349
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.773 ± 0.112  (random = 0.5)
+  AUC-PR:  0.869 ± 0.086  (random = 0.696)
+
+===== checkpoints/fp32/seed1.pt =====
+validation: threshold (99th pct) 2.2256, median 0.4444
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 2.7170
+  valve2: threshold 2.6455
+  TP=19 FP=3 FN=1 TN=17 | precision 0.864 recall 0.950 F1 0.905
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2256
+  valve2: threshold 2.2256
+  TP=20 FP=17 FN=0 TN=3 | precision 0.541 recall 1.000 F1 0.702
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.690 ± 0.106  (random = 0.5)
+  AUC-PR:  0.818 ± 0.066  (random = 0.696)
+
+===== checkpoints/fp32/seed2.pt =====
+validation: threshold (99th pct) 2.2183, median 0.3473
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.6271
+  valve2: threshold 3.3359
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2183
+  valve2: threshold 2.2183
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.793 ± 0.103  (random = 0.5)
+  AUC-PR:  0.880 ± 0.083  (random = 0.696)
+
+===== checkpoints/fp32/seed3.pt =====
+validation: threshold (99th pct) 2.2248, median 0.4724
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 2.6694
+  valve2: threshold 2.6583
+  TP=20 FP=5 FN=0 TN=15 | precision 0.800 recall 1.000 F1 0.889
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2248
+  valve2: threshold 2.2248
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.702 ± 0.113  (random = 0.5)
+  AUC-PR:  0.822 ± 0.073  (random = 0.696)
+
+===== checkpoints/fp32/seed4.pt =====
+validation: threshold (99th pct) 2.2802, median 0.4485
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 2.6365
+  valve2: threshold 2.7692
+  TP=19 FP=3 FN=1 TN=17 | precision 0.864 recall 0.950 F1 0.905
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2802
+  valve2: threshold 2.2802
+  TP=20 FP=17 FN=0 TN=3 | precision 0.541 recall 1.000 F1 0.702
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.658 ± 0.104  (random = 0.5)
+  AUC-PR:  0.801 ± 0.054  (random = 0.696)
+
+===== checkpoints/qat3/seed0.pt [sim] =====
+validation: threshold (99th pct) 2.4290, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.8788
+  valve2: threshold 4.3428
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.4290
+  valve2: threshold 2.4290
+  TP=19 FP=6 FN=1 TN=14 | precision 0.760 recall 0.950 F1 0.844
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.818 ± 0.132  (random = 0.5)
+  AUC-PR:  0.915 ± 0.072  (random = 0.696)
+
+===== checkpoints/qat3/seed1.pt [sim] =====
+validation: threshold (99th pct) 2.3849, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.1297
+  valve2: threshold 4.1064
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3849
+  valve2: threshold 2.3849
+  TP=19 FP=14 FN=1 TN=6 | precision 0.576 recall 0.950 F1 0.717
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.850 ± 0.096  (random = 0.5)
+  AUC-PR:  0.914 ± 0.077  (random = 0.696)
+
+===== checkpoints/qat3/seed2.pt [sim] =====
+validation: threshold (99th pct) 2.4214, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.9084
+  valve2: threshold 4.6395
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.4214
+  valve2: threshold 2.4214
+  TP=20 FP=11 FN=0 TN=9 | precision 0.645 recall 1.000 F1 0.784
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.810 ± 0.141  (random = 0.5)
+  AUC-PR:  0.918 ± 0.068  (random = 0.696)
+
+===== checkpoints/qat3/seed3.pt [sim] =====
+validation: threshold (99th pct) 2.4360, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.9287
+  valve2: threshold 4.8196
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.4360
+  valve2: threshold 2.4360
+  TP=20 FP=5 FN=0 TN=15 | precision 0.800 recall 1.000 F1 0.889
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.815 ± 0.126  (random = 0.5)
+  AUC-PR:  0.916 ± 0.068  (random = 0.696)
+
+===== checkpoints/qat3/seed4.pt [sim] =====
+validation: threshold (99th pct) 2.4360, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 6.3106
+  valve2: threshold 6.1732
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.4360
+  valve2: threshold 2.4360
+  TP=20 FP=3 FN=0 TN=17 | precision 0.870 recall 1.000 F1 0.930
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.877 ± 0.077  (random = 0.5)
+  AUC-PR:  0.944 ± 0.042  (random = 0.696)
+
+===== checkpoints/qat4/seed0.pt [sim] =====
+validation: threshold (99th pct) 2.4290, median 0.5440
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.5379
+  valve2: threshold 3.4669
+  TP=16 FP=0 FN=4 TN=20 | precision 1.000 recall 0.800 F1 0.889
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.4290
+  valve2: threshold 2.4290
+  TP=20 FP=11 FN=0 TN=9 | precision 0.645 recall 1.000 F1 0.784
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.822 ± 0.132  (random = 0.5)
+  AUC-PR:  0.913 ± 0.078  (random = 0.696)
+
+===== checkpoints/qat4/seed0.pt [int] =====
+validation: threshold (99th pct) 2.3530, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.7141
+  valve2: threshold 4.4000
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3530
+  valve2: threshold 2.3530
+  TP=19 FP=14 FN=1 TN=6 | precision 0.576 recall 0.950 F1 0.717
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.814 ± 0.136  (random = 0.5)
+  AUC-PR:  0.915 ± 0.072  (random = 0.696)
+
+===== checkpoints/qat4/seed1.pt [sim] =====
+validation: threshold (99th pct) 2.3531, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.4039
+  valve2: threshold 4.2364
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3531
+  valve2: threshold 2.3531
+  TP=19 FP=11 FN=1 TN=9 | precision 0.633 recall 0.950 F1 0.760
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.824 ± 0.129  (random = 0.5)
+  AUC-PR:  0.915 ± 0.075  (random = 0.696)
+
+===== checkpoints/qat4/seed1.pt [int] =====
+validation: threshold (99th pct) 2.2742, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.6717
+  valve2: threshold 4.5164
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2742
+  valve2: threshold 2.2742
+  TP=19 FP=10 FN=1 TN=10 | precision 0.655 recall 0.950 F1 0.776
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.801 ± 0.158  (random = 0.5)
+  AUC-PR:  0.914 ± 0.076  (random = 0.696)
+
+===== checkpoints/qat4/seed2.pt [sim] =====
+validation: threshold (99th pct) 2.3474, median 0.4523
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.6999
+  valve2: threshold 3.6082
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3474
+  valve2: threshold 2.3474
+  TP=20 FP=12 FN=0 TN=8 | precision 0.625 recall 1.000 F1 0.769
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.836 ± 0.117  (random = 0.5)
+  AUC-PR:  0.912 ± 0.081  (random = 0.696)
+
+===== checkpoints/qat4/seed2.pt [int] =====
+validation: threshold (99th pct) 2.3376, median 0.4772
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.4925
+  valve2: threshold 3.4054
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3376
+  valve2: threshold 2.3376
+  TP=20 FP=14 FN=0 TN=6 | precision 0.588 recall 1.000 F1 0.741
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.844 ± 0.106  (random = 0.5)
+  AUC-PR:  0.910 ± 0.085  (random = 0.696)
+
+===== checkpoints/qat4/seed3.pt [sim] =====
+validation: threshold (99th pct) 2.3581, median 0.4616
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.6157
+  valve2: threshold 3.6338
+  TP=15 FP=0 FN=5 TN=20 | precision 1.000 recall 0.750 F1 0.857
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3581
+  valve2: threshold 2.3581
+  TP=20 FP=12 FN=0 TN=8 | precision 0.625 recall 1.000 F1 0.769
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.844 ± 0.105  (random = 0.5)
+  AUC-PR:  0.912 ± 0.081  (random = 0.696)
+
+===== checkpoints/qat4/seed3.pt [int] =====
+validation: threshold (99th pct) 2.3531, median 0.4240
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.9296
+  valve2: threshold 3.8314
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3531
+  valve2: threshold 2.3531
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.841 ± 0.104  (random = 0.5)
+  AUC-PR:  0.912 ± 0.080  (random = 0.696)
+
+===== checkpoints/qat4/seed4.pt [sim] =====
+validation: threshold (99th pct) 2.3531, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.9040
+  valve2: threshold 3.7611
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3531
+  valve2: threshold 2.3531
+  TP=20 FP=14 FN=0 TN=6 | precision 0.588 recall 1.000 F1 0.741
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.844 ± 0.106  (random = 0.5)
+  AUC-PR:  0.911 ± 0.082  (random = 0.696)
+
+===== checkpoints/qat4/seed4.pt [int] =====
+validation: threshold (99th pct) 2.3474, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.4398
+  valve2: threshold 4.3055
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3474
+  valve2: threshold 2.3474
+  TP=19 FP=12 FN=1 TN=8 | precision 0.613 recall 0.950 F1 0.745
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.837 ± 0.113  (random = 0.5)
+  AUC-PR:  0.914 ± 0.075  (random = 0.696)
+
+===== checkpoints/qat5/seed0.pt [sim] =====
+validation: threshold (99th pct) 2.2519, median 0.4586
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.3064
+  valve2: threshold 3.0821
+  TP=16 FP=1 FN=4 TN=19 | precision 0.941 recall 0.800 F1 0.865
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2519
+  valve2: threshold 2.2519
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.795 ± 0.145  (random = 0.5)
+  AUC-PR:  0.891 ± 0.093  (random = 0.696)
+
+===== checkpoints/qat5/seed0.pt [int] =====
+validation: threshold (99th pct) 2.3343, median 0.5401
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.1198
+  valve2: threshold 3.1198
+  TP=15 FP=2 FN=5 TN=18 | precision 0.882 recall 0.750 F1 0.811
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3343
+  valve2: threshold 2.3343
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.788 ± 0.140  (random = 0.5)
+  AUC-PR:  0.891 ± 0.089  (random = 0.696)
+
+===== checkpoints/qat5/seed1.pt [sim] =====
+validation: threshold (99th pct) 2.2576, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.7764
+  valve2: threshold 3.6315
+  TP=15 FP=0 FN=5 TN=20 | precision 1.000 recall 0.750 F1 0.857
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2576
+  valve2: threshold 2.2576
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.807 ± 0.114  (random = 0.5)
+  AUC-PR:  0.894 ± 0.088  (random = 0.696)
+
+===== checkpoints/qat5/seed1.pt [int] =====
+validation: threshold (99th pct) 2.2669, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.0731
+  valve2: threshold 3.9109
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2669
+  valve2: threshold 2.2669
+  TP=20 FP=13 FN=0 TN=7 | precision 0.606 recall 1.000 F1 0.755
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.827 ± 0.105  (random = 0.5)
+  AUC-PR:  0.906 ± 0.081  (random = 0.696)
+
+===== checkpoints/qat5/seed2.pt [sim] =====
+validation: threshold (99th pct) 2.2690, median 0.4993
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.3270
+  valve2: threshold 3.2348
+  TP=17 FP=0 FN=3 TN=20 | precision 1.000 recall 0.850 F1 0.919
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2690
+  valve2: threshold 2.2690
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.830 ± 0.123  (random = 0.5)
+  AUC-PR:  0.911 ± 0.082  (random = 0.696)
+
+===== checkpoints/qat5/seed2.pt [int] =====
+validation: threshold (99th pct) 2.2725, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.0467
+  valve2: threshold 3.9820
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2725
+  valve2: threshold 2.2725
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.831 ± 0.123  (random = 0.5)
+  AUC-PR:  0.912 ± 0.082  (random = 0.696)
+
+===== checkpoints/qat5/seed3.pt [sim] =====
+validation: threshold (99th pct) 2.2653, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.8652
+  valve2: threshold 3.7788
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2653
+  valve2: threshold 2.2653
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.849 ± 0.097  (random = 0.5)
+  AUC-PR:  0.911 ± 0.084  (random = 0.696)
+
+===== checkpoints/qat5/seed3.pt [int] =====
+validation: threshold (99th pct) 2.2719, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.9502
+  valve2: threshold 3.8573
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2719
+  valve2: threshold 2.2719
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.845 ± 0.102  (random = 0.5)
+  AUC-PR:  0.911 ± 0.083  (random = 0.696)
+
+===== checkpoints/qat5/seed4.pt [sim] =====
+validation: threshold (99th pct) 2.2616, median 0.4755
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.2247
+  valve2: threshold 3.3360
+  TP=14 FP=1 FN=6 TN=19 | precision 0.933 recall 0.700 F1 0.800
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2616
+  valve2: threshold 2.2616
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.817 ± 0.123  (random = 0.5)
+  AUC-PR:  0.901 ± 0.087  (random = 0.696)
+
+===== checkpoints/qat5/seed4.pt [int] =====
+validation: threshold (99th pct) 2.2447, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.7151
+  valve2: threshold 3.8438
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2447
+  valve2: threshold 2.2447
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.827 ± 0.116  (random = 0.5)
+  AUC-PR:  0.902 ± 0.087  (random = 0.696)
+
+===== checkpoints/qat6/seed0.pt [sim] =====
+validation: threshold (99th pct) 2.2632, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.7683
+  valve2: threshold 3.8025
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2632
+  valve2: threshold 2.2632
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.830 ± 0.124  (random = 0.5)
+  AUC-PR:  0.905 ± 0.090  (random = 0.696)
+
+===== checkpoints/qat6/seed0.pt [int] =====
+validation: threshold (99th pct) 2.3177, median 0.4113
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.7575
+  valve2: threshold 3.7188
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3177
+  valve2: threshold 2.3177
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.833 ± 0.123  (random = 0.5)
+  AUC-PR:  0.913 ± 0.082  (random = 0.696)
+
+===== checkpoints/qat6/seed1.pt [sim] =====
+validation: threshold (99th pct) 2.2519, median 0.3688
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.7605
+  valve2: threshold 3.7085
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2519
+  valve2: threshold 2.2519
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.849 ± 0.101  (random = 0.5)
+  AUC-PR:  0.911 ± 0.084  (random = 0.696)
+
+===== checkpoints/qat6/seed1.pt [int] =====
+validation: threshold (99th pct) 2.3065, median 0.3915
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.8073
+  valve2: threshold 3.6888
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3065
+  valve2: threshold 2.3065
+  TP=20 FP=13 FN=0 TN=7 | precision 0.606 recall 1.000 F1 0.755
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.852 ± 0.098  (random = 0.5)
+  AUC-PR:  0.914 ± 0.081  (random = 0.696)
+
+===== checkpoints/qat6/seed2.pt [sim] =====
+validation: threshold (99th pct) 2.3156, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.8563
+  valve2: threshold 3.5187
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3156
+  valve2: threshold 2.3156
+  TP=20 FP=13 FN=0 TN=7 | precision 0.606 recall 1.000 F1 0.755
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.846 ± 0.108  (random = 0.5)
+  AUC-PR:  0.908 ± 0.089  (random = 0.696)
+
+===== checkpoints/qat6/seed2.pt [int] =====
+validation: threshold (99th pct) 2.3298, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.9332
+  valve2: threshold 3.6792
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3298
+  valve2: threshold 2.3298
+  TP=20 FP=11 FN=0 TN=9 | precision 0.645 recall 1.000 F1 0.784
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.846 ± 0.106  (random = 0.5)
+  AUC-PR:  0.908 ± 0.089  (random = 0.696)
+
+===== checkpoints/qat6/seed3.pt [sim] =====
+validation: threshold (99th pct) 2.2954, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.8584
+  valve2: threshold 3.6725
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2954
+  valve2: threshold 2.2954
+  TP=20 FP=13 FN=0 TN=7 | precision 0.606 recall 1.000 F1 0.755
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.785 ± 0.145  (random = 0.5)
+  AUC-PR:  0.880 ± 0.099  (random = 0.696)
+
+===== checkpoints/qat6/seed3.pt [int] =====
+validation: threshold (99th pct) 2.2782, median 0.4283
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.4426
+  valve2: threshold 3.2411
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2782
+  valve2: threshold 2.2782
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.779 ± 0.156  (random = 0.5)
+  AUC-PR:  0.879 ± 0.101  (random = 0.696)
+
+===== checkpoints/qat6/seed4.pt [sim] =====
+validation: threshold (99th pct) 2.3483, median 0.4419
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.5177
+  valve2: threshold 3.5640
+  TP=14 FP=1 FN=6 TN=19 | precision 0.933 recall 0.700 F1 0.800
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3483
+  valve2: threshold 2.3483
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.846 ± 0.100  (random = 0.5)
+  AUC-PR:  0.913 ± 0.080  (random = 0.696)
+
+===== checkpoints/qat6/seed4.pt [int] =====
+validation: threshold (99th pct) 2.3578, median 0.4154
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.8993
+  valve2: threshold 3.7710
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3578
+  valve2: threshold 2.3578
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.846 ± 0.099  (random = 0.5)
+  AUC-PR:  0.918 ± 0.074  (random = 0.696)
+
+===== checkpoints/qat8/seed0.pt [sim] =====
+validation: threshold (99th pct) 2.2866, median 0.3628
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.1683
+  valve2: threshold 4.1408
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2866
+  valve2: threshold 2.2866
+  TP=20 FP=13 FN=0 TN=7 | precision 0.606 recall 1.000 F1 0.755
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.849 ± 0.096  (random = 0.5)
+  AUC-PR:  0.913 ± 0.081  (random = 0.696)
+
+===== checkpoints/qat8/seed0.pt [int] =====
+validation: threshold (99th pct) 2.3138, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 5.0613
+  valve2: threshold 5.0353
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3138
+  valve2: threshold 2.3138
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.789 ± 0.168  (random = 0.5)
+  AUC-PR:  0.911 ± 0.086  (random = 0.696)
+
+===== checkpoints/qat8/seed1.pt [sim] =====
+validation: threshold (99th pct) 2.1731, median 0.3096
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.0281
+  valve2: threshold 3.5054
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.1731
+  valve2: threshold 2.1731
+  TP=20 FP=13 FN=0 TN=7 | precision 0.606 recall 1.000 F1 0.755
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.832 ± 0.132  (random = 0.5)
+  AUC-PR:  0.907 ± 0.095  (random = 0.696)
+
+===== checkpoints/qat8/seed1.pt [int] =====
+validation: threshold (99th pct) 2.7382, median 0.7721
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 4.0930
+  valve2: threshold 3.9562
+  TP=17 FP=0 FN=3 TN=20 | precision 1.000 recall 0.850 F1 0.919
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.7382
+  valve2: threshold 2.7382
+  TP=20 FP=12 FN=0 TN=8 | precision 0.625 recall 1.000 F1 0.769
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.823 ± 0.150  (random = 0.5)
+  AUC-PR:  0.922 ± 0.081  (random = 0.696)
+
+===== checkpoints/qat8/seed2.pt [sim] =====
+validation: threshold (99th pct) 2.3577, median 0.4458
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.6143
+  valve2: threshold 3.6104
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3577
+  valve2: threshold 2.3577
+  TP=20 FP=13 FN=0 TN=7 | precision 0.606 recall 1.000 F1 0.755
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.850 ± 0.095  (random = 0.5)
+  AUC-PR:  0.912 ± 0.083  (random = 0.696)
+
+===== checkpoints/qat8/seed2.pt [int] =====
+validation: threshold (99th pct) 2.3595, median 0.4749
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.8466
+  valve2: threshold 3.5658
+  TP=15 FP=0 FN=5 TN=20 | precision 1.000 recall 0.750 F1 0.857
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3595
+  valve2: threshold 2.3595
+  TP=19 FP=15 FN=1 TN=5 | precision 0.559 recall 0.950 F1 0.704
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.816 ± 0.143  (random = 0.5)
+  AUC-PR:  0.912 ± 0.084  (random = 0.696)
+
+===== checkpoints/qat8/seed3.pt [sim] =====
+validation: threshold (99th pct) 2.2451, median 0.4145
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.5802
+  valve2: threshold 3.6533
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.2451
+  valve2: threshold 2.2451
+  TP=20 FP=16 FN=0 TN=4 | precision 0.556 recall 1.000 F1 0.714
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.830 ± 0.103  (random = 0.5)
+  AUC-PR:  0.904 ± 0.084  (random = 0.696)
+
+===== checkpoints/qat8/seed3.pt [int] =====
+validation: threshold (99th pct) 2.6494, median 0.7132
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.9278
+  valve2: threshold 3.8900
+  TP=17 FP=0 FN=3 TN=20 | precision 1.000 recall 0.850 F1 0.919
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.6494
+  valve2: threshold 2.6494
+  TP=19 FP=15 FN=1 TN=5 | precision 0.559 recall 0.950 F1 0.704
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.795 ± 0.165  (random = 0.5)
+  AUC-PR:  0.912 ± 0.086  (random = 0.696)
+
+===== checkpoints/qat8/seed4.pt [sim] =====
+validation: threshold (99th pct) 2.3025, median 0.3618
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.9653
+  valve2: threshold 4.0172
+  TP=13 FP=0 FN=7 TN=20 | precision 1.000 recall 0.650 F1 0.788
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3025
+  valve2: threshold 2.3025
+  TP=20 FP=14 FN=0 TN=6 | precision 0.588 recall 1.000 F1 0.741
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.849 ± 0.094  (random = 0.5)
+  AUC-PR:  0.910 ± 0.084  (random = 0.696)
+
+===== checkpoints/qat8/seed4.pt [int] =====
+validation: threshold (99th pct) 2.3090, median 0.3771
+
+With Ling's calibration (compare with paper, F1 = 0.766):
+  valve1: threshold 3.8901
+  valve2: threshold 3.9464
+  TP=14 FP=0 FN=6 TN=20 | precision 1.000 recall 0.700 F1 0.824
+
+Without calibration (fixed validation threshold):
+  valve1: threshold 2.3090
+  valve2: threshold 2.3090
+  TP=20 FP=15 FN=0 TN=5 | precision 0.571 recall 1.000 F1 0.727
+
+Threshold-free metrics (per file, averaged over 20 files):
+  AUC-ROC: 0.850 ± 0.094  (random = 0.5)
+  AUC-PR:  0.910 ± 0.084  (random = 0.696)
+
+===== SUMMARY =====
+model                              valid MSE  F1 cal  F1 fixed  AUC-ROC  AUC-PR
+checkpoints/fp32/seed0.pt              0.772   0.833     0.714    0.773   0.869
+checkpoints/fp32/seed1.pt              0.767   0.905     0.702    0.690   0.818
+checkpoints/fp32/seed2.pt              0.772   0.824     0.714    0.793   0.880
+checkpoints/fp32/seed3.pt              0.767   0.889     0.714    0.702   0.822
+checkpoints/fp32/seed4.pt              0.772   0.905     0.702    0.658   0.801
+checkpoints/qat3/seed0.pt [sim]        0.942   0.788     0.844    0.818   0.915
+checkpoints/qat3/seed1.pt [sim]        0.861   0.824     0.717    0.850   0.914
+checkpoints/qat3/seed2.pt [sim]        0.915   0.788     0.784    0.810   0.918
+checkpoints/qat3/seed3.pt [sim]        0.927   0.788     0.889    0.815   0.916
+checkpoints/qat3/seed4.pt [sim]        1.000   0.788     0.930    0.877   0.944
+checkpoints/qat4/seed0.pt [sim]        0.836   0.889     0.784    0.822   0.913
+checkpoints/qat4/seed0.pt [int]        0.840   0.788     0.717    0.814   0.915
+checkpoints/qat4/seed1.pt [sim]        0.820   0.788     0.760    0.824   0.915
+checkpoints/qat4/seed1.pt [int]        0.857   0.788     0.776    0.801   0.914
+checkpoints/qat4/seed2.pt [sim]        0.821   0.824     0.769    0.836   0.912
+checkpoints/qat4/seed2.pt [int]        0.822   0.824     0.741    0.844   0.910
+checkpoints/qat4/seed3.pt [sim]        0.817   0.857     0.769    0.844   0.912
+checkpoints/qat4/seed3.pt [int]        0.823   0.788     0.714    0.841   0.912
+checkpoints/qat4/seed4.pt [sim]        0.826   0.824     0.741    0.844   0.911
+checkpoints/qat4/seed4.pt [int]        0.837   0.788     0.745    0.837   0.914
+checkpoints/qat5/seed0.pt [sim]        0.763   0.865     0.714    0.795   0.891
+checkpoints/qat5/seed0.pt [int]        0.778   0.811     0.714    0.788   0.891
+checkpoints/qat5/seed1.pt [sim]        0.765   0.857     0.714    0.807   0.894
+checkpoints/qat5/seed1.pt [int]        0.782   0.824     0.755    0.827   0.906
+checkpoints/qat5/seed2.pt [sim]        0.767   0.919     0.714    0.830   0.911
+checkpoints/qat5/seed2.pt [int]        0.785   0.824     0.727    0.831   0.912
+checkpoints/qat5/seed3.pt [sim]        0.781   0.824     0.727    0.849   0.911
+checkpoints/qat5/seed3.pt [int]        0.783   0.824     0.727    0.845   0.911
+checkpoints/qat5/seed4.pt [sim]        0.769   0.800     0.727    0.817   0.901
+checkpoints/qat5/seed4.pt [int]        0.776   0.824     0.714    0.827   0.902
+checkpoints/qat6/seed0.pt [sim]        0.763   0.824     0.714    0.830   0.905
+checkpoints/qat6/seed0.pt [int]        0.788   0.824     0.727    0.833   0.913
+checkpoints/qat6/seed1.pt [sim]        0.767   0.824     0.714    0.849   0.911
+checkpoints/qat6/seed1.pt [int]        0.770   0.824     0.755    0.852   0.914
+checkpoints/qat6/seed2.pt [sim]        0.775   0.824     0.755    0.846   0.908
+checkpoints/qat6/seed2.pt [int]        0.776   0.824     0.784    0.846   0.908
+checkpoints/qat6/seed3.pt [sim]        0.767   0.824     0.755    0.785   0.880
+checkpoints/qat6/seed3.pt [int]        0.782   0.824     0.714    0.779   0.879
+checkpoints/qat6/seed4.pt [sim]        0.787   0.800     0.714    0.846   0.913
+checkpoints/qat6/seed4.pt [int]        0.787   0.824     0.727    0.846   0.918
+checkpoints/qat8/seed0.pt [sim]        0.779   0.788     0.755    0.849   0.913
+checkpoints/qat8/seed0.pt [int]        0.857   0.788     0.727    0.789   0.911
+checkpoints/qat8/seed1.pt [sim]        0.578   0.824     0.755    0.832   0.907
+checkpoints/qat8/seed1.pt [int]        0.984   0.919     0.769    0.823   0.922
+checkpoints/qat8/seed2.pt [sim]        0.788   0.824     0.755    0.850   0.912
+checkpoints/qat8/seed2.pt [int]        0.803   0.857     0.704    0.816   0.912
+checkpoints/qat8/seed3.pt [sim]        0.767   0.824     0.714    0.830   0.904
+checkpoints/qat8/seed3.pt [int]        0.979   0.919     0.704    0.795   0.912
+checkpoints/qat8/seed4.pt [sim]        0.773   0.788     0.741    0.849   0.910
+checkpoints/qat8/seed4.pt [int]        0.773   0.824     0.727    0.850   0.910
+
+group (mean ± std over seeds)      valid MSE  F1 cal  F1 fixed  AUC-ROC  AUC-PR
+fp32 (n=5)                             0.770   0.871     0.709    0.723   0.838
+                                      ±0.002  ±0.035    ±0.006   ±0.052  ±0.031
+qat3 [sim] (n=5)                       0.929   0.795     0.833    0.834   0.921
+                                      ±0.045  ±0.014    ±0.076   ±0.026  ±0.011
+qat4 [sim] (n=5)                       0.824   0.836     0.765    0.834   0.913
+                                      ±0.007  ±0.034    ±0.014   ±0.009  ±0.001
+qat4 [int] (n=5)                       0.836   0.795     0.739    0.827   0.913
+                                      ±0.013  ±0.014    ±0.022   ±0.017  ±0.002
+qat5 [sim] (n=5)                       0.769   0.853     0.719    0.819   0.902
+                                      ±0.006  ±0.040    ±0.006   ±0.019  ±0.008
+qat5 [int] (n=5)                       0.781   0.821     0.728    0.824   0.904
+                                      ±0.003  ±0.005    ±0.015   ±0.019  ±0.008
+qat6 [sim] (n=5)                       0.772   0.819     0.730    0.831   0.903
+                                      ±0.009  ±0.009    ±0.020   ±0.024  ±0.012
+qat6 [int] (n=5)                       0.780   0.824     0.742    0.831   0.907
+                                      ±0.007  ±0.000    ±0.025   ±0.027  ±0.014
+qat8 [sim] (n=5)                       0.737   0.809     0.744    0.842   0.910
+                                      ±0.080  ±0.017    ±0.016   ±0.009  ±0.003
+qat8 [int] (n=5)                       0.879   0.861     0.726    0.815   0.914
+                                      ±0.088  ±0.052    ±0.024   ±0.022  ±0.004

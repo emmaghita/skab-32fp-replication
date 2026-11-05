@@ -101,15 +101,19 @@ Validation MSE (z-scored target): FP32 ≈ 0.77, integer 6-bit ≈ 0.77–0.79.
 4. Possibly add the trivial baselines (always-alarm F1, z-score AUC) to `evaluate.py`.
 5. Write up results and caveats.
 
-## 6. Commands (run from the project root)
+## 6. Commands (run from inside `software/`)
 
 ```fish
-.venv/bin/python -m data_prep.prepare_data_v2                 # rebuild data/
-.venv/bin/python -m training.train --seed 0                    # -> checkpoints/fp32/seed0.pt
-.venv/bin/python -m training.train_qat --seed 0 --bits 6       # -> checkpoints/qat6/seed0.pt
-.venv/bin/python -m evaluation.evaluate checkpoints/fp32/*.pt checkpoints/qat6/*.pt
-.venv/bin/python -m evaluation.evaluate --fault-end ling checkpoints/qat6/*.pt
+cd software
+uv run python -m data_prep.prepare_data_v2                 # rebuild data/ (reads ../../SKAB/data)
+uv run python -m training.train --seed 0                    # -> checkpoints/fp32/seed0.pt
+uv run python -m training.train_qat --seed 0 --bits 6       # -> checkpoints/qat6/seed0.pt
+uv run python -m evaluation.evaluate checkpoints/fp32/*.pt checkpoints/qat6/*.pt
+uv run python -m evaluation.evaluate --fault-end ling checkpoints/qat6/*.pt
 ```
+
+Layout (5 Nov 2026): `software/` = core, data_prep, training, evaluation, data, checkpoints,
+logs, figures; `hardware/` = VHDL part; `notes/` stays at the project root.
 
 ## 7. Issues found in Ling et al.'s work
 

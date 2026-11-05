@@ -3,7 +3,7 @@ import pandas as pd
 
 from core.dataset import WINDOW
 
-src = "../SKAB/data"
+src = "../../SKAB/data"
 out = "data/SKABData_v2"
 for d in ["normal", "valid", "valve1", "valve2"]:
     os.makedirs(f"{out}/{d}", exist_ok=True)

@@ -4,3 +4,4 @@ checkpoints/
 pyproject.toml
 data/
 .idea/
+__pycache__/
