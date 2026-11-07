@@ -11,16 +11,20 @@ from elasticai.creator.nn.integer.linear import Linear
 from elasticai.creator.nn.integer.addition import Addition
 from elasticai.creator.nn.integer.encoder import Encoder
 from elasticai.creator.nn.integer.avgpooling1d import AVGPooling1d
+from elasticai.creator.nn.integer.vhdl_test_automation.file_save_utils import save_quant_data
 
 from core.model import PositionalEncoding  # my own PE from the FP32 model (fixed, never trained)
 
 
 class QuantTinyTransformer(nn.Module):
-    def __init__(self, num_in, num_out, d_model=24, window=24, quant_bits=6, device="cpu"):
+    def __init__(self, num_in, num_out, d_model=24, window=24, quant_bits=6, device="cpu",
+                 name="transformer", quant_data_dir=None):
         super().__init__()
         self.config = dict(num_in=num_in, num_out=num_out, d_model=d_model, window=window,
                            quant_bits=quant_bits)          # to rebuild it (checkpoints, to_integer)
         self.quant_bits = quant_bits
+        self.name = name # top-level vhdl name + data file names
+        self.quant_data_dir = quant_data_dir
         # int_mode = False: QAT, floats snapped to the b-bit grid (training + accuracy)
         # int_mode = True:  integer-only, the same arithmetic as the FPGA (use to_integer())
         self.int_mode = False
@@ -29,9 +33,9 @@ class QuantTinyTransformer(nn.Module):
         pe = PositionalEncoding(d_model, window).pe            # [window, d_model]
         self.register_buffer("pos_info", pe.unsqueeze(0))
 
-        common = dict(quant_bits=quant_bits, device=device)   # every layer gets these
+        common = dict(quant_bits=quant_bits, device=device, quant_data_dir=quant_data_dir)   # every layer gets these
 
-        # the same 5 blocks as model.py; the names become VHDL file names later
+        # the same 5 blocks as model.py, the names become VHDL file names later
         self.input_linear = Linear(
             name="input_linear", in_features=num_in, out_features=d_model,
             num_dimensions=window, bias=True, **common)
@@ -82,22 +86,21 @@ class QuantTinyTransformer(nn.Module):
         assert not self.training, "integer mode only works in eval mode"
         assert hasattr(self, "q_pos_info"), "call precompute() first (or use to_integer())"
 
-        q = self.input_linear.inputs_QParams.quantize(x).to("cpu")   # door: float -> int
+        q = self.input_linear.inputs_QParams.quantize(x).to("cpu")   # float to int
+        save_quant_data(q, self.quant_data_dir, f"{self.name}_q_x")  # testbench input (skipped if None)
         q = self.input_linear.int_forward(q_inputs=q)                 # integers only from here
         q = self.pos_info_addition.int_forward(q_inputs1=q, q_inputs2=self.q_pos_info)
         q = self.encoder.int_forward(q_inputs=q)
         q = self.avg_pooling.int_forward(q_inputs=q)
         q = self.output_linear.int_forward(q_inputs=q)
-        y = self.output_linear.outputs_QParams.dequantize(q)         # exit: int -> float
+        save_quant_data(q, self.quant_data_dir, f"{self.name}_q_y")  # expected testbench output
+        y = self.output_linear.outputs_QParams.dequantize(q)         # int to float
         return y.squeeze(1)
 
 
-def to_integer(model):
-    # integer-only copy of a trained QAT model; the original stays trainable.
-    # (deepcopy fails on the library layers, so rebuild and load the state instead).
-    # clone(): the library's QParams loading shares tensors instead of copying them, so
-    # without it precompute() would overwrite the original model's quantizers too
-    m = QuantTinyTransformer(**model.config)
+def to_integer(model, quant_data_dir=None):
+    # integer-only copy of a trained QAT model; the original stays trainable
+    m = QuantTinyTransformer(**model.config, name=model.name, quant_data_dir=quant_data_dir)
     m.load_state_dict({k: v.clone() for k, v in model.state_dict().items()})
     m.eval()
     m.precompute()
