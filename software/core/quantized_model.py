@@ -13,6 +13,8 @@ from elasticai.creator.nn.integer.encoder import Encoder
 from elasticai.creator.nn.integer.avgpooling1d import AVGPooling1d
 from elasticai.creator.nn.integer.vhdl_test_automation.file_save_utils import save_quant_data
 
+from hw_design.design import Transformer as TransformerDesign
+
 from core.model import PositionalEncoding  # my own PE from the FP32 model (fixed, never trained)
 
 
@@ -25,6 +27,7 @@ class QuantTinyTransformer(nn.Module):
         self.quant_bits = quant_bits
         self.name = name # top-level vhdl name + data file names
         self.quant_data_dir = quant_data_dir
+
         # int_mode = False: QAT, floats snapped to the b-bit grid (training + accuracy)
         # int_mode = True:  integer-only, the same arithmetic as the FPGA (use to_integer())
         self.int_mode = False
@@ -97,6 +100,13 @@ class QuantTinyTransformer(nn.Module):
         y = self.output_linear.outputs_QParams.dequantize(q)         # int to float
         return y.squeeze(1)
 
+    def create_design(self, name):
+        return TransformerDesign(
+            name=name, data_width=self.quant_bits,
+            input_linear=self.input_linear, inputs_pos_info=self.q_pos_info.squeeze(0).tolist(),
+            pos_info_addition=self.pos_info_addition, encoder=self.encoder,
+            avg_pooling=self.avg_pooling, output_linear=self.output_linear)
+
 
 def to_integer(model, quant_data_dir=None):
     # integer-only copy of a trained QAT model; the original stays trainable
@@ -106,7 +116,6 @@ def to_integer(model, quant_data_dir=None):
     m.precompute()
     m.int_mode = True
     return m
-
 
 if __name__ == "__main__":
     torch.manual_seed(0)
