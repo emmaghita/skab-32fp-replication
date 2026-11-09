@@ -1,0 +1,7 @@
+# VHDL LS (VS Code extension hbohlin.vhdl-ls): which VHDL files belong together, so
+# go-to-definition and error checking work across files (ieee is built in).
+# The library can't be called "work": in VHDL "work" means "the library this file is in",
+# so "entity work.input_linear" in these files resolves inside "defaultlib".
+# Points at the generated seed-1 design; add/change the path for other designs.
+[libraries]
+defaultlib.files = ["hardware/qat6_seed1/source/**/*.vhd"]
