@@ -6,4 +6,5 @@ data/
 .idea/
 __pycache__/
 .vscode/
-hardware/*/source/
+hardware/*/
+hardware/*.log
